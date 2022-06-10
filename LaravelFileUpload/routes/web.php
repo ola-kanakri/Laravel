@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\FileUploadController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -13,17 +13,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+
+Route::get('/', function () {
+    return view('welcome');
+});
+
+ 
+Route::get('file-upload', [FileUploadController::class, 'index']);
+Route::post('store', [FileUploadController::class, 'store']);
 
 
-//Route for posts
-Route::get('/posts', 'PostController@index')->name('posts');
-
-
-// Route for generate form
-Route::get('file-upload', [FileUploadController::class, 'fileUpload'])->name('file.upload');
-
-// Route for POST
-Route::post('file-upload', [FileUploadController::class, 'fileUploadPost'])->name('file.upload.post');
